@@ -1,0 +1,69 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr, lastpage}
+\usepackage{tikz}
+\usepackage{amsmath,amssymb,amsthm}
+\usetikzlibrary{calc}
+\usepackage{enumitem}
+\usepackage{soul}
+
+% Universes
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+
+% Groups commands
+\newcommand{\inv}{^{-1}}
+\newcommand{\lcm}{\mathrm{lcm}}
+\newcommand{\lr}[1]{\langle #1 \rangle}
+\newcommand{\Inn}{\mathrm{Inn}}
+\newcommand{\iso}{\cong}
+\newcommand{\normal}{\triangleleft}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\parindent}{0cm}
+\pagestyle{fancy}
+\lhead{MATH458 Abstract Algebra}
+\rhead{Homework 7}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\section*{Homework 7}
+
+Unless otherwise indicated, you must justify all answers/steps. See the Canvas assignment for more information about the homework requirements. 
+
+\begin{enumerate}
+
+    \item Let $N$ be a normal subgroup of a group $G$. Use properties of group homomorphisms to show that every subgroup of $G/N$ has the form $H/N$, where $H$ is a subgroup of $G$. 
+    
+    \item The Second Isomorphism Theorem states:
+        \begin{quote}
+            If $K$ is a subgroup of $G$ and $N$ is a normal subgroup of $G$, then $K/(K\cap N)\iso KN/N$.
+        \end{quote}
+
+        \begin{enumerate}
+            \item Draw a diagram (similar to a subgroup lattice) that shows the relationship between the groups $G$, $K$, $N$, $KN$, $K\cap N$, and $\{e\}$. 
+
+            \item Implied in the conclusion of the theorm is that $KN\le G$, $K\cap N\normal K$ and $N\normal KN$. Justify why this is true given the hypotheses.
+    
+            \item Prove the theorem.
+
+        \end{enumerate}
+        
+    \item The set $G=\{1,4,11,14,16,19,26,29,31,34,41,44\}$ is  group under multiplication modulo 45. 
+        \begin{enumerate}
+            \item Write $G$ as an internal direct product of cyclic subgroups of prime-power order. (No justification needed here.)
+            
+            \item Determine the isomorphism class of $G$ by writing $G$ as an external direct product of cyclic groups of prime-power order. (No justification needed here.)
+            
+            \item Justify your answers to parts (a) and (b).
+            
+        \end{enumerate}
+    
+    \item Let $G$ be an abelian group of order $p^n$ for some prime $p$ and positive integer $n$. Prove that $G$ is cyclic if and only if $G$ has exactly $p-1$ elements of order $p$. 
+
+    \end{enumerate}
+\end{document}

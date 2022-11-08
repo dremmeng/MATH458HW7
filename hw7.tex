@@ -1,0 +1,102 @@
+% LaTeX Article Template - customizing page format
+%
+% LaTeX document uses 10-point fonts by default.  To use
+% 11-point or 12-point fonts, use \documentclass[11pt]{article}
+% or \documentclass[12pt]{article}.
+\documentclass{article}
+
+% Set left margin - The default is 1 inch, so the following 
+% command sets a 1.25-inch left margin.
+\setlength{\oddsidemargin}{0.25in}
+
+% Set width of the text - What is left will be the right margin.
+% In this case, right margin is 8.5in - 1.25in - 6in = 1.25in.
+\setlength{\textwidth}{6in}
+
+% Set top margin - The default is 1 inch, so the following 
+% command sets a 0.75-inch top margin.
+\setlength{\topmargin}{-0.25in}
+
+% Set height of the text - What is left will be the bottom margin.
+% In this case, bottom margin is 11in - 0.75in - 9.5in = 0.75in
+\setlength{\textheight}{8in}
+\usepackage{fancyhdr, lastpage}
+\usepackage{tikz}
+\usepackage{amsmath,amssymb,amsthm}
+\usetikzlibrary{calc}
+\usepackage{enumitem}
+\usepackage{soul}
+\usetikzlibrary{positioning}
+\graphicspath{ {./} }
+\setlength{\parskip}{5pt} 
+\pagestyle{fancyplain}
+
+% Universes
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+
+% Groups commands
+\newcommand{\inv}{^{-1}}
+\newcommand{\lcm}{\mathrm{lcm}}
+\newcommand{\lr}[1]{\langle #1 \rangle}
+\newcommand{\Inn}{\mathrm{Inn}}
+\newcommand{\iso}{\cong}
+\newcommand{\normal}{\triangleleft}
+% Set the beginning of a LaTeX document
+\begin{document}
+
+\lhead{Drew Remmenga MATH 458}
+\rhead{HW \#7}
+%\lhead{Independent Study}
+%\rhead{R Lab}
+
+
+\begin{enumerate}
+
+    \item Let $N$ be a normal subgroup of a group $G$. Use properties of group homomorphisms to show that every subgroup of $G/N$ has the form $H/N$, where $H$ is a subgroup of $G$. Let $\phi : G \rightarrow G/N$ be the canonical group homomorphism that sends an element $g \in G$ to its equivelence class $[g]$. Let $K$ be a subgroup of $G/H$. Since the inverse image of a subgroup under a group homomorphism is a subgroup we have $\phi^{-1}(K)$ is a subgroup of G containing $ker(\phi) = N$. Lets denote $\phi^{-1}(K)$ by H. Then $H$ is a subgroup of $G$ and $\phi(H)=K$. Since $\phi|_{H} : H \rightarrow \phi(H)$ is surjective by first isomorphism theorem $\phi(H) \cong H/ker(\phi|_{H})$. Since $N \subset H$ we have $ker(\phi|_{H})=ker(\phi) \cap H = N \cap H = N$. Hence $K=\phi(H) \cong H/N$. Since $K$ was arbitrary this completes the proof. 
+    
+    \item The Second Isomorphism Theorem states:
+        \begin{quote}
+            If $K$ is a subgroup of $G$ and $N$ is a normal subgroup of $G$, then $K/(K\cap N)\iso KN/N$.
+        \end{quote}
+
+        \begin{enumerate}
+            \item Draw a diagram (similar to a subgroup lattice) that shows the relationship between the groups $G$, $K$, $N$, $KN$, $K\cap N$, and $\{e\}$. 
+\begin{tikzpicture}[ on grid]
+	\node(G) at (0,0) {$G$};
+         \node(Z12) [below = of G]     {$KN$};
+         \node(C2)  [below left = of Z12] {$K$};
+         \node(C3)  [below right = of Z12] {$N$};
+         \node(C6)  [below right= of C2] {$K\cap N$};
+         \node(C4) [below = of C6] {$\{e\}$};
+	\draw(G) -- (Z12);
+         \draw(Z12) -- (C2);
+         \draw(Z12) -- (C3);
+         \draw(C2) -- (C6);
+         \draw(C3) -- (C6);
+         \draw(C6) -- (C4);
+     \end{tikzpicture}
+
+            \item Implied in the conclusion of the theorm is that $KN\le G$, $K\cap N\normal K$ and $N\normal KN$. Justify why this is true given the hypotheses. Since $K$ and $N$ are subgroups and $N$ is normal for each $k \in K, kNk^{-1} = N$. Therefore $kN = Nk, \forall k \in K$. Hence $KN = NK$ and therefore $KN \leq G$. 
+    
+            \item Prove the theorem. We have $K \rightarrow KN \rightarrow KN/N$, where the first map is inclusion and the second map is the canonical surjection. We denote the first map by $i$ and the second map by $j$. Since the first map is injective the kernal of the composite map must be the kerneal of the second map instersected with $K$ ie $K \cap N$, We will be done by first isomorphism theorjem if we can show that the composite map is surjective. For any $[a] \in KN/N \exists b \in KN$ such that $j(b) = [a]$. But all elements of $KN$ are of the form $kn$ for $k \in K$ and $n \in N$. Therefore $b=k_{1}n_{1}$ for some $k_{1} \in K$ and some $n_{1} \in N$.  We now see that $j(i(k_{1})) = j(k_{1})= j(k_{1}n_{1})= [a]$, as $n_{1} \in N, j(k_{1})=j(n_{1}k_{1})$. Therefore the composite map $K \rightarrow KN/N$ is surjective with kernal $K\cap N$ and hence by first isomorphism theorem $K/(K\cap N) \cong KN/N$.
+
+        \end{enumerate}
+        
+    \item The set $G=\{1,4,11,14,16,19,26,29,31,34,41,44\}$ is  group under multiplication modulo 45. 
+        \begin{enumerate}
+            \item Write $G$ as an internal direct product of cyclic subgroups of prime-power order. (No justification needed here.) $G \cong \ZZ_{2} \oplus \ZZ_{2} \oplus \ZZ_{3}$ Since G has two elements of order 2 it cannot be isomorphic to $\ZZ_{4} \oplus \ZZ_{3}$.
+            
+            \item Determine the isomorphism class of $G$ by writing $G$ as an external direct product of cyclic groups of prime-power order. (No justification needed here.) $\lr{19} = \{1,19\}$ and $\lr{26} = \{1,26\}$. $\lr{19} \times \lr{26} = \{1,19,26,44\}$. Since $\lr{16} = \{1, 16, 31\}$ we can conclude $G = \lr{19} \times \lr{16} \times \lr{26}$
+            
+            \item Justify your answers to parts (a) and (b).
+            
+        \end{enumerate}
+    
+    \item Let $G$ be an abelian group of order $p^n$ for some prime $p$ and positive integer $n$. Prove that $G$ is cyclic if and only if $G$ has exactly $p-1$ elements of order $p$. Since $p|p^{n}$ for every divsor (p) of a finite abelian group there is $\phi(p) = p-1$ elemenets of order p. For all finite abelian groups if they have unique cyclic subgroups for every divisor of the order of the group then the group is cyclic. To prove the converse part let there be $p-1$ elements of order $p$. Now for finite abelian groups the number of cyclic subgroups of order p is equal to the number of elements of order p divided by $\phi (p)$. $\frac{p-1}{\phi(p)}=\frac{p-1}{p-1}=1$. Given that there are $p-1$ elements of order $p$. Thus the proof is complete. 
+
+\end{enumerate}
+\end{document}
